@@ -11,8 +11,9 @@ import { ReactComponent as Linkedin } from "../assets/uil_linkedin.svg";
 import { ReactComponent as Instagram } from "../assets/mdi_instagram.svg";
 import { FC } from "react";
 import { TAboveFooter } from "../types/types";
+import { handleIconClick } from "../utils/constants";
 
-const AboveFooter: FC<TAboveFooter> = ({ handleIconClick }) => {
+const AboveFooter: FC<TAboveFooter> = () => {
   return (
     <div className="above-footer">
       <div className="container">
@@ -44,29 +45,23 @@ const AboveFooter: FC<TAboveFooter> = ({ handleIconClick }) => {
           <div className="fb">
             <div className="img-div-soc">
               <Facebook
-                onClick={() =>
-                  handleIconClick("https://www.facebook.com/EButlerApp/")
-                }
+                onClick={handleIconClick(
+                  "https://www.facebook.com/EButlerApp/"
+                )}
               />
               <Twitter
-                onClick={() =>
-                  handleIconClick("https://twitter.com/ebutler_app")
-                }
+                onClick={handleIconClick("https://twitter.com/ebutler_app")}
               />
               <Instagram
-                onClick={() =>
-                  handleIconClick(
-                    "https://www.instagram.com/ebutler.app/?igshid=1lnawicasvii0"
-                  )
-                }
+                onClick={handleIconClick(
+                  "https://www.instagram.com/ebutler.app/?igshid=1lnawicasvii0"
+                )}
               />
 
               <Linkedin
-                onClick={() =>
-                  handleIconClick(
-                    "https://www.linkedin.com/company/e-butler/about"
-                  )
-                }
+                onClick={handleIconClick(
+                  "https://www.linkedin.com/company/e-butler/about"
+                )}
               />
             </div>
             <div style={{ display: "flex", justifyContent: "center" }}>
@@ -74,18 +69,30 @@ const AboveFooter: FC<TAboveFooter> = ({ handleIconClick }) => {
                 style={{ width: "50%" }}
                 src={Image}
                 alt="Theqa"
-                onClick={() =>
-                  handleIconClick(
-                    "http://www.theqa.qa/certificates/details/2a2dfa6b-d5b5-4575-b232-9c3811777d1e"
-                  )
-                }
+                onClick={handleIconClick(
+                  "http://www.theqa.qa/certificates/details/2a2dfa6b-d5b5-4575-b232-9c3811777d1e"
+                )}
               />
             </div>
           </div>
           <div style={{ width: "400px" }} className="fb-sib">
             <div className="app">
-              <img src={Google} alt="Google" />
-              <img src={AppS} alt="AppS" />
+              <img
+                src={Google}
+                alt="Google"
+                style={{ cursor: "pointer" }}
+                onClick={handleIconClick(
+                  "https://play.google.com/store/apps/details?id=com.app.eButler"
+                )}
+              />
+              <img
+                src={AppS}
+                alt="AppS"
+                style={{ cursor: "pointer" }}
+                onClick={handleIconClick(
+                  "https://apps.apple.com/us/app/e-butler/id1330880597"
+                )}
+              />
             </div>
           </div>
         </div>

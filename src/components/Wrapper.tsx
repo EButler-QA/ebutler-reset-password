@@ -50,7 +50,7 @@ const Wrapper = () => {
         <div style={{ marginLeft: "15px" }}>Home</div>
       </nav>
       <Reset />
-      <AboveFooter handleIconClick={handleIconClick(homePageLink)} />
+      <AboveFooter  />
       <Footer
         handleOpenDialog={handleOpenDialog}
         handleOpenDialog2={handleOpenDialog2}

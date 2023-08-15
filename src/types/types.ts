@@ -1,7 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 
 export type TAboveFooter = {
-    handleIconClick: (url: string) => void;
   }
 
   export type TFooter = {
