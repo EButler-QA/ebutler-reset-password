@@ -1,5 +1,6 @@
 import { ChangeEvent, useState } from "react";
 import { isMatch } from "../utils/constants";
+import base64 from "base-64";
 
 const Reset = () => {
   const [passwords, setPasswords] = useState({
@@ -13,7 +14,11 @@ const Reset = () => {
   const handleChangeInputReNew = (e: ChangeEvent<HTMLInputElement>) => {
     setPasswords((prev) => ({ ...prev, reNewPass: e.target.value }));
   };
-
+  const queryParameters = new URLSearchParams(window.location.search);
+  const _token = queryParameters.get("_token");
+  const UserType = queryParameters.get("UserType");
+  const userTypeDecoded = base64.decode(base64.decode(UserType as string));
+  const UserId = queryParameters.get("UserId");
   const handleSubmit = () => {
     setIsSubmit(true);
     if (
@@ -22,7 +27,7 @@ const Reset = () => {
       passwords.reNewPass
     ) {
       fetch(
-        `https://api.e-butler.com/webservice_latest.php?type=resetPasswordViaEmail&newPassword=${passwords.newPass}&_token=MZeJi71pefcPQlfrZEW6uvq8BQqyJ6S1&UserType=Y21sa1pYST0&eSignUpType=Normal&UserId=8tFjBh8&apiKey=37b617a8-c56c-463a-b8b8-fbc44743e0ae`,
+        `https://api.e-butler.com/webservice_latest.php?type=resetPasswordViaEmail&newPassword=${passwords.newPass}&_token=${_token}&UserType=${userTypeDecoded}&eSignUpType=Normal&UserId=${UserId}&apiKey=33666f4f-caed-42a0-911f-8e1b7629a2ea`,
         {
           method: "GET",
           headers: {
