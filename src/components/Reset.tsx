@@ -19,7 +19,8 @@ const Reset = () => {
   const UserType = queryParameters.get("UserType");
   const userTypeDecoded = base64.decode(base64.decode(UserType as string));
   const UserId = queryParameters.get("UserId");
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setIsSubmit(true);
     if (
       isMatch(passwords.newPass, passwords.reNewPass) &&
@@ -32,9 +33,18 @@ const Reset = () => {
           method: "GET",
           headers: {
             "EButler-API-Key": "1763e2ea-1e49-48c2-a3e9-d196d437bf43",
+            Cookie: "(PHPSESSID = jdv3fargpltinj9bd7nkrssqch)",
           },
         }
-      );
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          if (response.Action) {
+            setTimeout(() => {
+              setIsSubmit(false);
+            }, 2000);
+          }
+        });
     } else {
       setTimeout(() => {
         setIsSubmit(false);
@@ -74,7 +84,31 @@ const Reset = () => {
         </div>
       </div>
 
-      <div className="input-wrapper">
+      <div
+        className={`${
+          isSubmit && !passwords.newPass && !passwords.reNewPass
+            ? "show-animation"
+            : "do-not-match"
+        } not-match`}
+      >
+        <div className="pass-not-match">
+          <p>Something went wrong with reset password</p>
+        </div>
+      </div>
+
+      <div
+        className={`${
+          isSubmit && isMatch(passwords.newPass, passwords.reNewPass)
+            ? "show-animation"
+            : "do-not-match"
+        } not-match`}
+      >
+        <div className="success">
+          <p>Password Reset Successfully</p>
+        </div>
+      </div>
+
+      <form className="input-wrapper" onSubmit={handleSubmit}>
         <div>
           <input
             type="password"
@@ -93,10 +127,10 @@ const Reset = () => {
             onChange={handleChangeInputReNew}
           />
         </div>
-      </div>
-      <div className="submit">
-        <button onClick={handleSubmit}>SUBMIT</button>
-      </div>
+        <div className="submit">
+          <button type="submit">SUBMIT</button>
+        </div>
+      </form>
     </main>
   );
 };

@@ -1,5 +1,5 @@
 export const isMatch = (pass: string, rePass: string) => {
-  return pass === rePass;
+  return pass === rePass && pass;
 };
 
 export const handleIconClick = (url: string) => () => {
