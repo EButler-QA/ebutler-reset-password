@@ -19,6 +19,7 @@ const Reset = () => {
   const UserType = queryParameters.get("UserType");
   const userTypeDecoded = base64.decode(base64.decode(UserType as string));
   const UserId = queryParameters.get("UserId");
+  const [isSuccess, setIsSuccess] = useState(false);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmit(true);
@@ -42,6 +43,7 @@ const Reset = () => {
           if (response.Action) {
             setTimeout(() => {
               setIsSubmit(false);
+              setIsSuccess(true);
             }, 2000);
           }
         });
@@ -96,41 +98,39 @@ const Reset = () => {
         </div>
       </div>
 
-      <div
-        className={`${
-          isSubmit && isMatch(passwords.newPass, passwords.reNewPass)
-            ? "show-animation"
-            : "do-not-match"
-        } not-match`}
-      >
-        <div className="success">
-          <p>Password Reset Successfully</p>
+      {isSuccess ? (
+        <div className={` not-match`}>
+          <div className="success">
+            <p>Password Reset Successfully</p>
+          </div>
         </div>
-      </div>
+      ) : null}
 
-      <form className="input-wrapper" onSubmit={handleSubmit}>
-        <div>
-          <input
-            type="password"
-            className="input-reset"
-            placeholder="New Password"
-            value={passwords.newPass}
-            onChange={handleChangeInputNew}
-          />
-        </div>
-        <div>
-          <input
-            type="password"
-            className="input-reset"
-            placeholder="Confirm Password"
-            value={passwords.reNewPass}
-            onChange={handleChangeInputReNew}
-          />
-        </div>
-        <div className="submit">
-          <button type="submit">SUBMIT</button>
-        </div>
-      </form>
+      {!isSuccess ? (
+        <form className="input-wrapper" onSubmit={handleSubmit}>
+          <div>
+            <input
+              type="password"
+              className="input-reset"
+              placeholder="New Password"
+              value={passwords.newPass}
+              onChange={handleChangeInputNew}
+            />
+          </div>
+          <div>
+            <input
+              type="password"
+              className="input-reset"
+              placeholder="Confirm Password"
+              value={passwords.reNewPass}
+              onChange={handleChangeInputReNew}
+            />
+          </div>
+          <div className="submit">
+            <button type="submit">SUBMIT</button>
+          </div>
+        </form>
+      ) : null}
     </main>
   );
 };

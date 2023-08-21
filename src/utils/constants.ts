@@ -15,3 +15,5 @@ export const homePageLink = "https://home.e-butler.com/index.php";
 
 export const whiteLogo =
   "https://home.e-butler.com/website-assets/images/whiteLogo.png";
+
+  
