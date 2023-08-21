@@ -1,5 +1,5 @@
 export const isMatch = (pass: string, rePass: string) => {
-  return pass === rePass && pass;
+  return pass || rePass ? pass === rePass : true;
 };
 
 export const handleIconClick = (url: string) => () => {
@@ -15,5 +15,3 @@ export const homePageLink = "https://home.e-butler.com/index.php";
 
 export const whiteLogo =
   "https://home.e-butler.com/website-assets/images/whiteLogo.png";
-
-  

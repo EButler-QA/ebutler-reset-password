@@ -20,6 +20,7 @@ const Reset = () => {
   const userTypeDecoded = base64.decode(base64.decode(UserType as string));
   const UserId = queryParameters.get("UserId");
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isLoading, setIsloading] = useState(false);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmit(true);
@@ -28,6 +29,7 @@ const Reset = () => {
       passwords.newPass &&
       passwords.reNewPass
     ) {
+      setIsloading(true);
       fetch(
         `https://api.e-butler.com/webservice_latest.php?type=resetPasswordViaEmail&newPassword=${passwords.newPass}&_token=${_token}&UserType=${userTypeDecoded}&eSignUpType=Normal&UserId=${UserId}&apiKey=33666f4f-caed-42a0-911f-8e1b7629a2ea`,
         {
@@ -44,6 +46,7 @@ const Reset = () => {
             setTimeout(() => {
               setIsSubmit(false);
               setIsSuccess(true);
+              setIsloading(false);
             }, 2000);
           }
         });
@@ -86,17 +89,6 @@ const Reset = () => {
         </div>
       </div>
 
-      <div
-        className={`${
-          isSubmit && !passwords.newPass && !passwords.reNewPass
-            ? "show-animation"
-            : "do-not-match"
-        } not-match`}
-      >
-        <div className="pass-not-match">
-          <p>Something went wrong with reset password</p>
-        </div>
-      </div>
 
       {isSuccess ? (
         <div className={` not-match`}>
@@ -127,7 +119,7 @@ const Reset = () => {
             />
           </div>
           <div className="submit">
-            <button type="submit">SUBMIT</button>
+            <button type="submit">{isLoading ? "Loading..." : "SUBMIT"}</button>
           </div>
         </form>
       ) : null}
