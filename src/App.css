@@ -1,5 +1,12 @@
 @import url("https://db.onlinewebfonts.com/c/0744a43ed7aac352ec78c1404c890d72?family=Gilroy-Light");
 
+:root {
+  --background-color: #ffffff; /* White background color */
+}
+body {
+  background-color: var(--background-color);
+}
+
 @media screen and (max-width: 576px) {
   /* Your CSS styles here */
   .fb-sib {
@@ -27,6 +34,7 @@
   }
   .reset-password {
     margin-top: 60px;
+    background-color: white;
   }
   .reset-password > h2 {
     font-size: 24px !important;
@@ -257,6 +265,7 @@ header {
 
 main {
   margin-bottom: 48px;
+  background-color: white;
 }
 .reset-password {
   width: 100%;
@@ -305,6 +314,7 @@ main {
   font-size: 16px;
   text-align: center;
   border: 2px solid #cacaca;
+  background-color: white;
 }
 .input-reset:focus {
   color: #495057;
@@ -340,7 +350,7 @@ main {
   cursor: pointer;
   -ms-border-radius: 3px;
   -webkit-transition: all ease 0.3s;
-  -ms-transition: all ease 0.3s; 
+  -ms-transition: all ease 0.3s;
   transition: all ease 0.3s;
 }
 .above-footer {
@@ -403,6 +413,7 @@ footer {
 }
 
 .menu {
+  background-color: white;
   position: absolute;
   /* bottom: 0; */
   top: 13px;
@@ -439,6 +450,20 @@ footer {
   color: #721c24;
   background-color: #f8d7da;
   border-color: #f5c6cb;
+  line-height: 26px;
+  letter-spacing: 0.5px;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.success {
+  color: #237e18;
+  background-color: rgba(95, 218, 95, 0.514);
+  /* border-color: #f5c6cb; */
   line-height: 26px;
   letter-spacing: 0.5px;
   border: 1px solid transparent;
