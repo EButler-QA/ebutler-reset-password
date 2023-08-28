@@ -1,5 +1,12 @@
 @import url("https://db.onlinewebfonts.com/c/0744a43ed7aac352ec78c1404c890d72?family=Gilroy-Light");
 
+:root {
+  --background-color: #ffffff; /* White background color */
+}
+body {
+  background-color: var(--background-color);
+}
+
 @media screen and (max-width: 576px) {
   /* Your CSS styles here */
   .fb-sib {
@@ -257,6 +264,7 @@ header {
 
 main {
   margin-bottom: 48px;
+  background-color: white;
 }
 .reset-password {
   width: 100%;
