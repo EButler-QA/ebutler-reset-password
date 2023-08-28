@@ -32,7 +32,7 @@ const Wrapper = () => {
   };
 
   return (
-    <section>
+    <section style={{ backgroundColor: "white" }}>
       <Popup1 isOpenDialog={isOpenDialog} setIsOpenDialog={setIsOpenDialog} />
       <Popup2
         isOpenDialog2={isOpenDialog2}
@@ -50,7 +50,7 @@ const Wrapper = () => {
         <div style={{ marginLeft: "15px" }}>Home</div>
       </nav>
       <Reset />
-      <AboveFooter  />
+      <AboveFooter />
       <Footer
         handleOpenDialog={handleOpenDialog}
         handleOpenDialog2={handleOpenDialog2}
