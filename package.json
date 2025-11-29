@@ -13,11 +13,13 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.2",
+    "base-64": "^1.0.0",
     "force": "^0.0.3",
     "vite-plugin-fonts": "^0.7.0",
     "vite-plugin-svgr": "^3.2.0"
   },
   "devDependencies": {
+    "@types/base-64": "^1.0.0",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
